@@ -1,0 +1,19 @@
+name: Trustabl
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: trustabl/actions@v0.1.1
+        with:
+          detectors: openai_sdk
